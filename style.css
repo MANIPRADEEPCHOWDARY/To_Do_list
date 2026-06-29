@@ -1,0 +1,192 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── gradient background matching the screenshot ── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(135deg, #1a237e 0%, #283593 25%, #4a148c 60%, #6a1b9a 100%);
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 480px;
+  padding: 1.5rem;
+}
+
+/* ── card ── */
+.card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem 2rem 2.5rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+/* ── title ── */
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.title-icon {
+  font-size: 1.5rem;
+}
+
+/* ── input row ── */
+.input-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-input {
+  flex: 1;
+  height: 48px;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 10px;
+  background: #f0f0f0;
+  font-size: 0.95rem;
+  color: #333;
+  outline: none;
+  transition: background 0.2s;
+}
+.task-input:focus {
+  background: #e4e4e4;
+}
+.task-input::placeholder {
+  color: #aaa;
+}
+
+.add-btn {
+  height: 48px;
+  padding: 0 1.6rem;
+  border: none;
+  border-radius: 10px;
+  background: #f4521a;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.add-btn:hover  { background: #d84315; }
+.add-btn:active { transform: scale(0.97); }
+
+/* ── task list ── */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── individual task item ── */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.task-item:hover {
+  background: #fafafa;
+}
+
+/* ── circle toggle button ── */
+.task-check {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.1s;
+  background: #e0e0e0;
+  color: #fff;
+  font-size: 0.8rem;
+}
+.task-check:active { transform: scale(0.9); }
+
+/* completed state → orange circle with checkmark */
+.task-item.done .task-check {
+  background: #f4521a;
+}
+.task-check .check-icon {
+  display: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+.task-item.done .task-check .check-icon {
+  display: block;
+}
+
+/* ── task text ── */
+.task-text {
+  flex: 1;
+  font-size: 0.97rem;
+  color: #444;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+  word-break: break-word;
+}
+.task-item.done .task-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+/* ── remove button ── */
+.task-remove {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bbb;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+}
+.task-remove:hover {
+  color: #e53935;
+  background: #fce4e4;
+}
+
+/* ── empty hint ── */
+.empty-hint {
+  text-align: center;
+  color: #ccc;
+  font-size: 0.88rem;
+  padding: 1rem 0 0.5rem;
+}
